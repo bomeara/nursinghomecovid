@@ -5,6 +5,7 @@ library(reactable)
 library(stringr)
 library(crosstalk)
 library(leaflet)
+library(plotly)
 
 get_data <- function(year=2023) {
 	tmp <- tempfile(fileext = ".zip")
@@ -108,7 +109,31 @@ make_presentation_data <- function(clean_data) {
 	
 	presentation_data$MarkerColor <- my_palette_fn(presentation_data$`Current Healthcare Personnel Up to Date with Covid Vaccines`)
 	
+	presentation_data <- presentation_data[order(presentation_data$`Beds Occupied` , decreasing=FALSE),]
+	
 	return(presentation_data)
+}
+
+make_succinct_data <- function(presentation_data) {
+	succinct_data <- presentation_data[,c(
+		"Facility",
+		"State",
+		"Current Residents Up to Date with Covid Vaccines",
+		"Current Healthcare Personnel Up to Date with Covid Vaccines",
+		"Current Healthcare Personnel Ever Vaccinated for Covid",
+		"Residents Total All Deaths",
+		"Residents Total Covid Deaths",
+		"Beds All",
+		"Beds Occupied",
+		"Total Resident Covid Deaths Per 1,000 Residents",
+		"PopupLabel",
+		"ResidentFullPercent",
+		"StaffFullPercent",
+		"MarkerColor",
+		"Longitude",
+		"Latitude"
+	)]
+	return(succinct_data)
 }
 
 geocode_data <- function(covid_data) {
