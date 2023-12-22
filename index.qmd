@@ -19,9 +19,10 @@ crosstalk::filter_slider('ResidentFullPercent', 'Percent of residents fully vacc
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+library(leaflet)
 leaflet(final_data) |>
   leaflet::addProviderTiles(providers$CartoDB.Positron)  |> 
-  setView(lng = -110, lat = 48, zoom = 3) |>
+  leaflet::setView(lng = -110, lat = 48, zoom = 3) |>
   leaflet::addCircleMarkers(data = final_data, lng = ~Longitude, lat = ~Latitude, popup = ~PopupLabel, radius=3, fillOpacity=0.5, color=~MarkerColor)
 
   #addMarkers(data = all_colleges, lng = ~Longitude, lat = ~Latitude, popup = ~PopupLabel, clusterOptions = markerClusterOptions())
@@ -101,4 +102,15 @@ reactable(final_data,
 	striped = TRUE
 )
 
+```
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+
+my_palette <- colorNumeric( "viridis", domain=seq(from=0, to=1, length.out=101), reverse=TRUE)(seq(from=0, to=1, length.out=101))
+
+library(plotly)
+fig <- plot_ly(final_data, x = ~`ResidentFullPercent`, y = ~`Total Resident Covid Deaths Per 1,000 Residents`, color = ~`Current Healthcare Personnel Up to Date with Covid Vaccines`, colors=my_palette, type = 'scatter', mode = 'markers', text = ~PopupLabel, hoverinfo = 'text', marker = list(size = 10, opacity = 0.8)) 
+fig <- layout(fig,yaxis = list(type = "log"))
+fig
 ```
