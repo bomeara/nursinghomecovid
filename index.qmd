@@ -1,0 +1,105 @@
+---
+title: "Nursing home covid"
+---
+
+```{r setup, include=FALSE, cache=TRUE}
+source('functions.R')
+covid_data <- get_data('2023')
+covid_cleaned <- clean_data(covid_data)
+covid_geo <- geocode_data(covid_cleaned)
+covid_presentation_data <- SharedData$new(make_presentation_data(covid_geo))
+```
+
+
+The US Centers for Medicare and Medicaid Services puts out a dataset of covid incidence, deaths, and vaccination at US nursing homes. The data are available at <https://data.cms.gov/covid-19/covid-19-nursing-home-data>. It has info on individual nursing homes, but it can be a little hard to use. I am making it more usable here, trying to make it easier for folks to see how people in nursing homes are being cared for. This uses federal data from the week ending `r max(covid_data$'Week Ending', na.rm=TRUE)`. You can use the sliders below to filter facilities, zoom in on the map, and look at the table below. In the table you can start typing in any of the boxes to filter the data (i.e., type "NY" in the state box to get just nursing homes in New York state). On the map, click on a point to get all the data for that facility. Colors show the percent of healthcare staff up to date with covid vaccines: purple is highest, yellow is lowest. The map is zoomed out to show the whole country, but you can zoom in to see individual facilities.
+
+```{r, echo=FALSE}
+crosstalk::filter_slider('StaffFullPercent', 'Percent of healthcare staff fully vaccinated', covid_presentation_data, 'StaffFullPercent', min=0, max=100, width='80%')
+
+crosstalk::filter_slider('ResidentFullPercent', 'Percent of residents fully vaccinated', covid_presentation_data, 'ResidentFullPercent', min=0, max=100, width='80%')
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+leaflet(covid_presentation_data) |>
+  addProviderTiles(providers$CartoDB.Positron)  |> 
+  setView(lng = -110, lat = 48, zoom = 3) |>
+  addCircleMarkers(data = covid_presentation_data, lng = ~Longitude, lat = ~Latitude, popup = ~PopupLabel, radius=3, fillOpacity=0.5, color=~MarkerColor)
+
+  #addMarkers(data = all_colleges, lng = ~Longitude, lat = ~Latitude, popup = ~PopupLabel, clusterOptions = markerClusterOptions())
+```
+
+```{r, echo=FALSE, asis=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
+blue_pal <- function(x) rgb(colorRamp(c("#E9EFFF", "#89A7FC"))(x), maxColorValue = 255)
+red_pal <- function(x) rgb(colorRamp(c("#FFE9E9", "#FF6464"))(x), maxColorValue = 255)
+
+
+reactable(covid_presentation_data, 
+ columns = list(
+    'Current Residents Up to Date with Covid Vaccines' = colDef(style = function(value) {
+      normalized <- (ifelse(is.na(value), 0, value) - 0) / 1
+      color <- blue_pal(normalized)
+      list(background = color)
+    }, format = colFormat(percent = TRUE, digits = 1)),
+	
+	 'Current Healthcare Personnel Up to Date with Covid Vaccines' = colDef(style = function(value) {
+      normalized <- (ifelse(is.na(value), 0, value) - 0) / 1
+      color <- blue_pal(normalized)
+      list(background = color)
+    }, format = colFormat(percent = TRUE, digits = 1)),
+	
+	'Current Healthcare Personnel Ever Vaccinated for Covid' = colDef(style = function(value) {
+	  normalized <- (ifelse(is.na(value), 0, value) - 0) / 1
+	  color <- blue_pal(normalized)
+	  list(background = color)
+	}, format = colFormat(percent = TRUE, digits = 1)),
+	
+	# 'Total Resident Covid Deaths Per 1,000 Residents' = colDef(style = function(value) {
+	#   normalized <- log1p(ifelse(is.na(value), 0, value) - min(covid_presentation_data$`Total Resident Covid Deaths Per 1,000 Residents`, na.rm=TRUE)) / log1p(max(covid_presentation_data$`Total Resident Covid Deaths Per 1,000 Residents`, na.rm=TRUE))
+	#   color <- red_pal(normalized)
+	#   list(background = color)
+	# }),
+	
+	Facility = colDef(
+      sticky = "left",
+      # Add a right border style to visually distinguish the sticky column
+      style = list(borderRight = "1px solid #eee"),
+      headerStyle = list(borderRight = "1px solid #eee")
+    ),
+	PopupLabel = colDef(
+		show=FALSE
+	),
+	MarkerColor = colDef(
+		show=FALSE
+	),
+	Longitude = colDef(
+		show=FALSE
+	),
+	Latitude = colDef(
+		show=FALSE
+	),
+	Zip =colDef(
+		show=FALSE
+	),
+	'Week Ending' = colDef(
+		show=FALSE
+	),
+	County = colDef(
+		show=FALSE
+	),
+	Address = colDef(
+		show=FALSE
+	)
+ ),
+	searchable = TRUE,
+	defaultColDef = colDef(
+	sortNALast = TRUE,
+    align = "center",
+	vAlign = "center",
+    minWidth = 150,
+    headerStyle = list(background = "#f7f7f8")
+  ),
+	filterable = TRUE,
+	striped = TRUE
+)
+
+```
