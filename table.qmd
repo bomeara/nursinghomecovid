@@ -1,0 +1,83 @@
+---
+title: "Table"
+---
+
+```{r setup, include=FALSE, cache=TRUE}
+source('functions.R')
+library(targets)
+tar_load_everything(strict=FALSE)
+final_data <- SharedData$new(covid_presentation_data)
+```
+
+
+This is a table showing all the facilities that had data which the [federal government](https://data.cms.gov/covid-19/covid-19-nursing-home-data) believes passed a quality assurance check. You can use the sliders and checkboxes below to filter facilities. You can also click on the column headers to sort the table and type in the box below each column header to filter the table. 
+
+{{< include filter.qmd >}}
+
+
+
+```{r, echo=FALSE, asis=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
+library(reactable)
+blue_pal <- function(x) rgb(colorRamp(c("#E9EFFF", "#89A7FC"))(x), maxColorValue = 255)
+red_pal <- function(x) rgb(colorRamp(c("#FFE9E9", "#FF6464"))(x), maxColorValue = 255)
+
+
+reactable(final_data, 
+ columns = list(
+    'Current Residents Up to Date with Covid Vaccines' = colDef(style = function(value) {
+      normalized <- (ifelse(is.na(value), 0, value) - 0) / 1
+      color <- blue_pal(normalized)
+      list(background = color)
+    }, format = colFormat(percent = TRUE, digits = 1)),
+	
+	 'Current Healthcare Personnel Up to Date with Covid Vaccines' = colDef(style = function(value) {
+      normalized <- (ifelse(is.na(value), 0, value) - 0) / 1
+      color <- blue_pal(normalized)
+      list(background = color)
+    }, format = colFormat(percent = TRUE, digits = 1)),
+	
+	'Current Healthcare Personnel Ever Vaccinated for Covid' = colDef(style = function(value) {
+	  normalized <- (ifelse(is.na(value), 0, value) - 0) / 1
+	  color <- blue_pal(normalized)
+	  list(background = color)
+	}, format = colFormat(percent = TRUE, digits = 1)),
+	
+	# 'Total Resident Covid Deaths Per 1,000 Residents' = colDef(style = function(value) {
+	#   normalized <- log1p(ifelse(is.na(value), 0, value) - min(final_data$`Total Resident Covid Deaths Per 1,000 Residents`, na.rm=TRUE)) / log1p(max(final_data$`Total Resident Covid Deaths Per 1,000 Residents`, na.rm=TRUE))
+	#   color <- red_pal(normalized)
+	#   list(background = color)
+	# }),
+	
+	Facility = colDef(
+      sticky = "left",
+      # Add a right border style to visually distinguish the sticky column
+      style = list(borderRight = "1px solid #eee"),
+      headerStyle = list(borderRight = "1px solid #eee")
+    ),
+	PopupLabel = colDef(
+		show=FALSE
+	),
+	MarkerColor = colDef(
+		show=FALSE
+	),
+	Longitude = colDef(
+		show=FALSE
+	),
+	Latitude = colDef(
+		show=FALSE
+	)
+ ),
+	searchable = TRUE,
+	defaultColDef = colDef(
+	sortNALast = TRUE,
+    align = "center",
+	vAlign = "center",
+    minWidth = 150,
+    headerStyle = list(background = "#f7f7f8")
+  ),
+	filterable = TRUE,
+	striped = TRUE
+)
+
+```
+

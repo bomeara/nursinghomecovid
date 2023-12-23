@@ -1,0 +1,27 @@
+---
+title: "Graphs"
+---
+
+```{r setup, include=FALSE, cache=TRUE}
+source('functions.R')
+library(targets)
+tar_load_everything(strict=FALSE)
+final_data <- SharedData$new(covid_presentation_data)
+```
+
+
+This is a scatter plot showing with color the percentage of healthcare staff currently (as of the week ending  `r max(covid_data$'Week Ending', na.rm=TRUE)`) fully vaccinated for covid, with the horizontal axis showing the percentage of residents fully vaccinated and the vertical axis showing the number of residents who died from covid, normalized over the number of residents through time (these data all come directly from <https://data.cms.gov/covid-19/covid-19-nursing-home-data>). You can use the sliders and checkboxes below to filter facilities. Clicking on any point will show detail on the facility.
+
+{{< include filter.qmd >}}
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+library(leaflet)
+my_palette <- colorNumeric( "viridis", domain=seq(from=0, to=1, length.out=101), reverse=TRUE)(seq(from=0, to=1, length.out=101))
+
+library(plotly)
+fig <- plot_ly(final_data, x = ~`ResidentFullPercent`, y = ~`Total Resident Covid Deaths Per 1,000 Residents`, color = ~`Current Healthcare Personnel Up to Date with Covid Vaccines`, colors=my_palette, type = 'scatter', mode = 'markers', text = ~PopupLabel, hoverinfo = 'text', marker = list(size = 10, opacity = 0.8)) |> layout(showlegend = FALSE)
+fig <- layout(fig, yaxis = list(type = "log"), xaxis = list(title = 'Percentage of nursing home residents fully vaccinated'))
+fig <- layout(fig, yaxis = list(title = 'Total resident covid deaths per 1,000 residents'))
+fig
+```

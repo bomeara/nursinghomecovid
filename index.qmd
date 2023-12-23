@@ -10,107 +10,11 @@ final_data <- SharedData$new(covid_presentation_data)
 ```
 
 
-The US Centers for Medicare and Medicaid Services puts out a dataset of covid incidence, deaths, and vaccination at US nursing homes. The data are available at <https://data.cms.gov/covid-19/covid-19-nursing-home-data>. It has info on individual nursing homes, but it can be a little hard to use. I am making it more usable here, trying to make it easier for folks to see how people in nursing homes are being cared for. This uses federal data from the week ending `r max(covid_data$'Week Ending', na.rm=TRUE)`. You can use the sliders below to filter facilities, zoom in on the map, and look at the table below. In the table you can start typing in any of the boxes to filter the data (i.e., type "NY" in the state box to get just nursing homes in New York state). On the map, click on a point to get all the data for that facility. Colors show the percent of healthcare staff up to date with covid vaccines: purple is highest, yellow is lowest. The map is zoomed out to show the whole country, but you can zoom in to see individual facilities.
+The US Centers for Medicare and Medicaid Services puts out a dataset of covid incidence, deaths, and vaccination at `r nrow(covid_cleaned)` US nursing homes. The data are available at <https://data.cms.gov/covid-19/covid-19-nursing-home-data>. It has info on individual nursing homes, but it can be a little hard to use. I am making it more usable here, trying to make it easier for folks to see how people in nursing homes are being cared for. This uses federal data from the week ending `r max(covid_data$'Week Ending', na.rm=TRUE)`. 
 
-```{r, echo=FALSE}
-crosstalk::filter_slider('StaffFullPercent', 'Percent of healthcare staff fully vaccinated', final_data, 'StaffFullPercent', min=0, max=100, width='80%')
+The tabs above have different views of the data. Some quick summaries:
 
-crosstalk::filter_slider('ResidentFullPercent', 'Percent of residents fully vaccinated', final_data, 'ResidentFullPercent', min=0, max=100, width='80%')
-```
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-library(leaflet)
-leaflet(final_data) |>
-  leaflet::addProviderTiles(providers$CartoDB.Positron)  |> 
-  leaflet::setView(lng = -110, lat = 48, zoom = 3) |>
-  leaflet::addCircleMarkers(data = final_data, lng = ~Longitude, lat = ~Latitude, popup = ~PopupLabel, radius=3, fillOpacity=0.5, color=~MarkerColor)
-
-  #addMarkers(data = all_colleges, lng = ~Longitude, lat = ~Latitude, popup = ~PopupLabel, clusterOptions = markerClusterOptions())
-```
-
-```{r, echo=FALSE, asis=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
-blue_pal <- function(x) rgb(colorRamp(c("#E9EFFF", "#89A7FC"))(x), maxColorValue = 255)
-red_pal <- function(x) rgb(colorRamp(c("#FFE9E9", "#FF6464"))(x), maxColorValue = 255)
-
-
-reactable(final_data, 
- columns = list(
-    'Current Residents Up to Date with Covid Vaccines' = colDef(style = function(value) {
-      normalized <- (ifelse(is.na(value), 0, value) - 0) / 1
-      color <- blue_pal(normalized)
-      list(background = color)
-    }, format = colFormat(percent = TRUE, digits = 1)),
-	
-	 'Current Healthcare Personnel Up to Date with Covid Vaccines' = colDef(style = function(value) {
-      normalized <- (ifelse(is.na(value), 0, value) - 0) / 1
-      color <- blue_pal(normalized)
-      list(background = color)
-    }, format = colFormat(percent = TRUE, digits = 1)),
-	
-	'Current Healthcare Personnel Ever Vaccinated for Covid' = colDef(style = function(value) {
-	  normalized <- (ifelse(is.na(value), 0, value) - 0) / 1
-	  color <- blue_pal(normalized)
-	  list(background = color)
-	}, format = colFormat(percent = TRUE, digits = 1)),
-	
-	# 'Total Resident Covid Deaths Per 1,000 Residents' = colDef(style = function(value) {
-	#   normalized <- log1p(ifelse(is.na(value), 0, value) - min(final_data$`Total Resident Covid Deaths Per 1,000 Residents`, na.rm=TRUE)) / log1p(max(final_data$`Total Resident Covid Deaths Per 1,000 Residents`, na.rm=TRUE))
-	#   color <- red_pal(normalized)
-	#   list(background = color)
-	# }),
-	
-	Facility = colDef(
-      sticky = "left",
-      # Add a right border style to visually distinguish the sticky column
-      style = list(borderRight = "1px solid #eee"),
-      headerStyle = list(borderRight = "1px solid #eee")
-    ),
-	PopupLabel = colDef(
-		show=FALSE
-	),
-	MarkerColor = colDef(
-		show=FALSE
-	),
-	Longitude = colDef(
-		show=FALSE
-	),
-	Latitude = colDef(
-		show=FALSE
-	),
-	Zip =colDef(
-		show=FALSE
-	),
-	'Week Ending' = colDef(
-		show=FALSE
-	),
-	County = colDef(
-		show=FALSE
-	),
-	Address = colDef(
-		show=FALSE
-	)
- ),
-	searchable = TRUE,
-	defaultColDef = colDef(
-	sortNALast = TRUE,
-    align = "center",
-	vAlign = "center",
-    minWidth = 150,
-    headerStyle = list(background = "#f7f7f8")
-  ),
-	filterable = TRUE,
-	striped = TRUE
-)
-
-```
-
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
-
-my_palette <- colorNumeric( "viridis", domain=seq(from=0, to=1, length.out=101), reverse=TRUE)(seq(from=0, to=1, length.out=101))
-
-library(plotly)
-fig <- plot_ly(final_data, x = ~`ResidentFullPercent`, y = ~`Total Resident Covid Deaths Per 1,000 Residents`, color = ~`Current Healthcare Personnel Up to Date with Covid Vaccines`, colors=my_palette, type = 'scatter', mode = 'markers', text = ~PopupLabel, hoverinfo = 'text', marker = list(size = 10, opacity = 0.8)) 
-fig <- layout(fig,yaxis = list(type = "log"))
-fig
-```
+* `r nrow(subset(covid_presentation_data, StaffFullPercent==0))` nursing homes have **zero healthcare staff fully up to date on covid vaccines**.
+* `r nrow(subset(covid_presentation_data, StaffFullPercent==100))` nursing homes have all healthcare staff fully up to date on covid vaccines.
+* `r nrow(subset(covid_presentation_data, ResidentFullPercent==0))` nursing homes have **zero residents fully up to date on covid vaccines**.
+* `r nrow(subset(covid_presentation_data, ResidentFullPercent==100))` nursing homes have all residents fully up to date on covid vaccines.

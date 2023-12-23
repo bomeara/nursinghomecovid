@@ -1,0 +1,12 @@
+```{r, echo=FALSE, warnings=FALSE, message=FALSE}
+source('functions.R')
+library(targets)
+tar_load_everything(strict=FALSE)
+final_data <- SharedData$new(covid_presentation_data)
+
+crosstalk::filter_slider('StaffFullPercent', 'Percent of healthcare staff fully vaccinated', final_data, 'StaffFullPercent', min=0, max=100, width='50%')
+crosstalk::filter_slider('ResidentFullPercent', 'Percent of residents fully vaccinated', final_data, 'ResidentFullPercent', min=0, max=100, width='50%')
+
+crosstalk::filter_checkbox("State", "State", final_data, ~State, columns=10)
+
+```
