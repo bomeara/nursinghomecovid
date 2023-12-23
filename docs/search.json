@@ -4,7 +4,28 @@
     "href": "graphs.html",
     "title": "Graphs",
     "section": "",
-    "text": "This is a scatter plot showing with color the percentage of healthcare staff currently (as of the week ending 12/10/23) fully vaccinated for covid, with the horizontal axis showing the percentage of residents fully vaccinated and the vertical axis showing the number of residents who died from covid, normalized over the number of residents through time (these data all come directly from https://data.cms.gov/covid-19/covid-19-nursing-home-data). You can use the sliders and checkboxes below to filter facilities. Clicking on any point will show detail on the facility.\n\n\n\nPercent of healthcare staff fully vaccinated\n\n\n\n\n\n\nPercent of residents fully vaccinated\n\n\n\n\n\n\nState\n\n\n\n\n\nAK\n\n\n\n\n\nAL\n\n\n\n\n\nAR\n\n\n\n\n\nAZ\n\n\n\n\n\nCA\n\n\n\n\n\nCO\n\n\n\n\n\n\n\nCT\n\n\n\n\n\nDC\n\n\n\n\n\nDE\n\n\n\n\n\nFL\n\n\n\n\n\nGA\n\n\n\n\n\nGU\n\n\n\n\n\n\n\nHI\n\n\n\n\n\nIA\n\n\n\n\n\nID\n\n\n\n\n\nIL\n\n\n\n\n\nIN\n\n\n\n\n\nKS\n\n\n\n\n\n\n\nKY\n\n\n\n\n\nLA\n\n\n\n\n\nMA\n\n\n\n\n\nMD\n\n\n\n\n\nME\n\n\n\n\n\nMI\n\n\n\n\n\n\n\nMN\n\n\n\n\n\nMO\n\n\n\n\n\nMS\n\n\n\n\n\nMT\n\n\n\n\n\nNC\n\n\n\n\n\nND\n\n\n\n\n\n\n\nNE\n\n\n\n\n\nNH\n\n\n\n\n\nNJ\n\n\n\n\n\nNM\n\n\n\n\n\nNV\n\n\n\n\n\nNY\n\n\n\n\n\n\n\nOH\n\n\n\n\n\nOK\n\n\n\n\n\nOR\n\n\n\n\n\nPA\n\n\n\n\n\nPR\n\n\n\n\n\nRI\n\n\n\n\n\n\n\nSC\n\n\n\n\n\nSD\n\n\n\n\n\nTN\n\n\n\n\n\nTX\n\n\n\n\n\nUT\n\n\n\n\n\nVA\n\n\n\n\n\n\n\nVT\n\n\n\n\n\nWA\n\n\n\n\n\nWI\n\n\n\n\n\nWV\n\n\n\n\n\nWY"
+    "text": "First is a scatter plot showing with color the percentage of healthcare staff currently (as of the week ending 12/10/23) fully vaccinated for covid, with the horizontal axis showing the percentage of residents fully vaccinated and the vertical axis showing the number of residents who died from covid, normalized over the number of residents through time (these data all come directly from https://data.cms.gov/covid-19/covid-19-nursing-home-data). There are histograms after that for counts. You can use the sliders and checkboxes below to filter facilities. Clicking on any point will show detail on the facility."
+  },
+  {
+    "objectID": "graphs.html#scatter-plot-of-nursing-home-covid-deaths-vs.-resident-vaccination-rates",
+    "href": "graphs.html#scatter-plot-of-nursing-home-covid-deaths-vs.-resident-vaccination-rates",
+    "title": "Graphs",
+    "section": "Scatter plot of nursing home covid deaths vs. resident vaccination rates",
+    "text": "Scatter plot of nursing home covid deaths vs. resident vaccination rates\n\n\n\nPercent of healthcare staff fully vaccinated\n\n\n\n\n\n\nPercent of residents fully vaccinated\n\n\n\n\n\n\nState\n\n\n\n\n\nAK\n\n\n\n\n\nAL\n\n\n\n\n\nAR\n\n\n\n\n\nAZ\n\n\n\n\n\nCA\n\n\n\n\n\nCO\n\n\n\n\n\n\n\nCT\n\n\n\n\n\nDC\n\n\n\n\n\nDE\n\n\n\n\n\nFL\n\n\n\n\n\nGA\n\n\n\n\n\nGU\n\n\n\n\n\n\n\nHI\n\n\n\n\n\nIA\n\n\n\n\n\nID\n\n\n\n\n\nIL\n\n\n\n\n\nIN\n\n\n\n\n\nKS\n\n\n\n\n\n\n\nKY\n\n\n\n\n\nLA\n\n\n\n\n\nMA\n\n\n\n\n\nMD\n\n\n\n\n\nME\n\n\n\n\n\nMI\n\n\n\n\n\n\n\nMN\n\n\n\n\n\nMO\n\n\n\n\n\nMS\n\n\n\n\n\nMT\n\n\n\n\n\nNC\n\n\n\n\n\nND\n\n\n\n\n\n\n\nNE\n\n\n\n\n\nNH\n\n\n\n\n\nNJ\n\n\n\n\n\nNM\n\n\n\n\n\nNV\n\n\n\n\n\nNY\n\n\n\n\n\n\n\nOH\n\n\n\n\n\nOK\n\n\n\n\n\nOR\n\n\n\n\n\nPA\n\n\n\n\n\nPR\n\n\n\n\n\nRI\n\n\n\n\n\n\n\nSC\n\n\n\n\n\nSD\n\n\n\n\n\nTN\n\n\n\n\n\nTX\n\n\n\n\n\nUT\n\n\n\n\n\nVA\n\n\n\n\n\n\n\nVT\n\n\n\n\n\nWA\n\n\n\n\n\nWI\n\n\n\n\n\nWV\n\n\n\n\n\nWY\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNext are a histogram showing the counts of nursing homes with different proportions of healthcare staff or residents fully vaccinated fully vaccinated for covid."
+  },
+  {
+    "objectID": "graphs.html#nursing-home-healthcare-staff-full-vaccination-rates",
+    "href": "graphs.html#nursing-home-healthcare-staff-full-vaccination-rates",
+    "title": "Graphs",
+    "section": "Nursing home healthcare staff full vaccination rates",
+    "text": "Nursing home healthcare staff full vaccination rates"
+  },
+  {
+    "objectID": "graphs.html#nursing-home-resident-full-vaccination-rates",
+    "href": "graphs.html#nursing-home-resident-full-vaccination-rates",
+    "title": "Graphs",
+    "section": "Nursing home resident full vaccination rates",
+    "text": "Nursing home resident full vaccination rates"
   },
   {
     "objectID": "table.html",
@@ -32,7 +53,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "This uses data from https://data.cms.gov/covid-19/covid-19-nursing-home-data .\nThe site is made with quarto and R: the source code is at https://github.com/bomeara/nursinghomecovid . It uses the readr, tidyverse, tidygeocoder, reactable, stringr, crosstalk, plotly, and leaflet packages.\nIt was made by Brian O’Meara. I’m a biologist, but this is outside my area of expertise: I do not know what vaccination rate is ideal in this setting, what covid rates are considered an acceptable tradeoff, biases in the reporting, and more. I’m just trying to make the data more accessible so that families can make informed decisions and journalists can dig into the data to see if there is anything of interest (facilities doing an exceptionally good or bad job, for example). I came across this dataset online and was surprised at how many facilities have no residents nor health care workers fully vaccinated against covid-19, given over 170,000 deaths in nursing homes in the US (as of Dec 22, 2023). To get in touch with an issue, go to https://github.com/bomeara/nursinghomecovid/issues. For issues with the original data, go to https://data.cms.gov/covid-19/covid-19-nursing-home-data (I have concerns about some of the data points – it’s hard to imagine 12,000 covid deaths for every 1,000 residents, for example – but I don’t know if that’s a data entry error or something else and so I do not filter it)."
+    "text": "This uses data from https://data.cms.gov/covid-19/covid-19-nursing-home-data .\nThe site is made with quarto and R: the source code is at https://github.com/bomeara/nursinghomecovid . It uses the readr, tidyverse, tidygeocoder, reactable, stringr, crosstalk, plotly, and leaflet packages.\nIt was made by Brian O’Meara. I’m a biologist, but this is outside my area of expertise: I do not know what vaccination rate is ideal in this setting, what covid rates are considered an acceptable tradeoff, biases in the reporting, and more. I’m just trying to make the data more accessible so that families can make informed decisions and journalists can dig into the data to see if there is anything of interest (facilities doing an exceptionally good or bad job, for example). I came across this dataset online and was surprised at how many facilities have no residents nor health care workers fully vaccinated against covid-19, given over 170,000 deaths in nursing homes in the US (as of Dec 22, 2023). To get in touch with an issue, go to https://github.com/bomeara/nursinghomecovid/issues. For issues with the original data, go to https://data.cms.gov/covid-19/covid-19-nursing-home-data."
   },
   {
     "objectID": "filter.html",

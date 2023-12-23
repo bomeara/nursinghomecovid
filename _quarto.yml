@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: docs
+  
+execute:
+  cache: false
 
 website:
   title: "Nursing home covid"
@@ -8,6 +11,9 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - map.qmd
+      - graphs.qmd
+      - table.qmd
       - about.qmd
 
 format:

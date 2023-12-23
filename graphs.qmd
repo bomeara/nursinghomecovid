@@ -10,7 +10,10 @@ final_data <- SharedData$new(covid_presentation_data)
 ```
 
 
-This is a scatter plot showing with color the percentage of healthcare staff currently (as of the week ending  `r max(covid_data$'Week Ending', na.rm=TRUE)`) fully vaccinated for covid, with the horizontal axis showing the percentage of residents fully vaccinated and the vertical axis showing the number of residents who died from covid, normalized over the number of residents through time (these data all come directly from <https://data.cms.gov/covid-19/covid-19-nursing-home-data>). You can use the sliders and checkboxes below to filter facilities. Clicking on any point will show detail on the facility.
+First is a scatter plot showing with color the percentage of healthcare staff currently (as of the week ending  `r max(covid_data$'Week Ending', na.rm=TRUE)`) fully vaccinated for covid, with the horizontal axis showing the percentage of residents fully vaccinated and the vertical axis showing the number of residents who died from covid, normalized over the number of residents through time (these data all come directly from <https://data.cms.gov/covid-19/covid-19-nursing-home-data>). There are histograms after that for counts. You can use the sliders and checkboxes below to filter facilities. Clicking on any point will show detail on the facility.
+
+## Scatter plot of nursing home covid deaths vs. resident vaccination rates
+
 
 {{< include filter.qmd >}}
 
@@ -20,8 +23,33 @@ library(leaflet)
 my_palette <- colorNumeric( "viridis", domain=seq(from=0, to=1, length.out=101), reverse=TRUE)(seq(from=0, to=1, length.out=101))
 
 library(plotly)
-fig <- plot_ly(final_data, x = ~`ResidentFullPercent`, y = ~`Total Resident Covid Deaths Per 1,000 Residents`, color = ~`Current Healthcare Personnel Up to Date with Covid Vaccines`, colors=my_palette, type = 'scatter', mode = 'markers', text = ~PopupLabel, hoverinfo = 'text', marker = list(size = 10, opacity = 0.8)) |> layout(showlegend = FALSE)
+fig <- plot_ly(final_data, x = ~`ResidentFullPercent`, y = ~`Total Resident Covid Deaths Per 1,000 Residents`, color = ~`Current Healthcare Personnel Up to Date with Covid Vaccines`, colors=my_palette, type = 'scatter', mode = 'markers', text = ~PopupLabel, hoverinfo = 'text', marker = list(size = 10, opacity = 0.8)) |> layout(showlegend = FALSE) |> hide_colorbar() 
 fig <- layout(fig, yaxis = list(type = "log"), xaxis = list(title = 'Percentage of nursing home residents fully vaccinated'))
 fig <- layout(fig, yaxis = list(title = 'Total resident covid deaths per 1,000 residents'))
+fig
+```
+
+---
+
+Next are a histogram showing the counts of nursing homes with different proportions of healthcare staff or residents fully vaccinated fully vaccinated for covid.
+
+
+
+## Nursing home healthcare staff full vaccination rates
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+
+fig <- plot_ly(final_data, x=~StaffFullPercent) |> add_histogram() |> layout(showlegend = FALSE) |> hide_colorbar() |> layout(xaxis = list(title = 'Percentage of nursing home healthcare staff fully vaccinated')) |> layout(yaxis = list(title = 'Count of nursing homes'))
+
+fig
+```
+
+
+## Nursing home resident full vaccination rates
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+
+fig <- plot_ly(final_data, x=~ResidentFullPercent) |> add_histogram() |> layout(showlegend = FALSE) |> hide_colorbar() |> layout(xaxis = list(title = 'Percentage of nursing home residents fully vaccinated')) |> layout(yaxis = list(title = 'Count of nursing homes'))
+
 fig
 ```
