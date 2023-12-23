@@ -29,6 +29,19 @@ fig <- layout(fig, yaxis = list(title = 'Total resident covid deaths per 1,000 r
 fig
 ```
 
+::: {.callout-note}
+
+Some of these rates look remarkably high. From the FAQ at <https://data.cms.gov/covid-19/covid-19-nursing-home-data>:
+
+How can there be more confirmed COVID-19 cases than beds in a nursing home?
+
+The nursing home data posted reflects cumulative cases and deaths of COVID-19 reported in a facility. A nursing home may report more confirmed COVID-19 cases than beds because they may encounter a large number of admissions and discharges of residents with COVID-19, resulting in more cumulative cases of COVID-19 over time than the number of beds at any one time.
+
+This may also be due to a data entry error on the part of the facility – for example, a nursing home may be entering cumulative numbers of confirmed COVID-19 cases in a field where the facility should only be entering the number of new cases.
+
+:::
+
+
 ---
 
 Next are a histogram showing the counts of nursing homes with different proportions of healthcare staff or residents fully vaccinated fully vaccinated for covid.
