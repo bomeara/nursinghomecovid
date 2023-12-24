@@ -10,7 +10,7 @@ final_data <- SharedData$new(covid_presentation_data)
 ```
 
 
-First is a scatter plot showing with color the percentage of healthcare staff currently (as of the week ending  `r max(covid_data$'Week Ending', na.rm=TRUE)`) fully vaccinated for covid, with the horizontal axis showing the percentage of residents fully vaccinated and the vertical axis showing the number of residents who died from covid, normalized over the number of residents through time (these data all come directly from <https://data.cms.gov/covid-19/covid-19-nursing-home-data>). There are histograms after that for counts. You can use the sliders and checkboxes below to filter facilities. Clicking on any point will show detail on the facility.
+First is a scatter plot showing with color the percentage of healthcare staff currently (as of the week ending  `r max(covid_data$'Week Ending', na.rm=TRUE)`) fully vaccinated for covid, with the horizontal axis showing the percentage of residents fully vaccinated and the vertical axis showing the number of residents who died from covid, normalized over the number of residents through time (these data all come directly from <https://data.cms.gov/covid-19/covid-19-nursing-home-data>). There are histograms after that for counts. You can use the sliders and checkboxes below to filter facilities and the graphs will automatically update. Clicking on any point will show detail on the facility.
 
 ## Scatter plot of nursing home covid deaths vs. resident vaccination rates
 
@@ -57,6 +57,14 @@ fig <- plot_ly(final_data, x=~StaffFullPercent) |> add_histogram() |> layout(sho
 fig
 ```
 
+## Nursing home healthcare staff who have ever received a covid vaccine
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+
+fig <- plot_ly(final_data, x=~StaffEverVaxPercent) |> add_histogram() |> layout(showlegend = FALSE) |> hide_colorbar() |> layout(xaxis = list(title = 'Percentage of nursing home healthcare staff ever vaccinated')) |> layout(yaxis = list(title = 'Count of nursing homes'))
+
+fig
+```
 
 ## Nursing home resident full vaccination rates
 
@@ -66,3 +74,4 @@ fig <- plot_ly(final_data, x=~ResidentFullPercent) |> add_histogram() |> layout(
 
 fig
 ```
+

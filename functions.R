@@ -102,6 +102,7 @@ make_presentation_data <- function(clean_data) {
 	
 	presentation_data$ResidentFullPercent <- presentation_data$`Current Residents Up to Date with Covid Vaccines`*100
 	presentation_data$StaffFullPercent <- presentation_data$`Current Healthcare Personnel Up to Date with Covid Vaccines`*100
+	presentation_data$StaffEverVaxPercent <- presentation_data$`Current Healthcare Personnel Ever Vaccinated for Covid`*100
 	
 	color_domain <- ifelse(is.na(presentation_data$`Current Healthcare Personnel Up to Date with Covid Vaccines`), 0, presentation_data$`Current Healthcare Personnel Up to Date with Covid Vaccines`)
 	

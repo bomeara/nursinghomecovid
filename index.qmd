@@ -12,9 +12,13 @@ final_data <- SharedData$new(covid_presentation_data)
 
 The US Centers for Medicare and Medicaid Services puts out a dataset of covid incidence, deaths, and vaccination at `r nrow(covid_cleaned)` US nursing homes. The data are available at <https://data.cms.gov/covid-19/covid-19-nursing-home-data>. It has info on individual nursing homes, but it can be a little hard to use. I am making it more usable here, trying to make it easier for folks to see how people in nursing homes are being cared for. This uses federal data from the week ending `r max(covid_data$'Week Ending', na.rm=TRUE)`. 
 
-The tabs above have different views of the data. Some quick summaries:
+The tabs above have different views of the data. **If you want to look at detail on a particular facility, it is probably easiest to use the [map](map.html) or [table](table.html) pages**. Some quick summaries:
 
-* `r nrow(subset(covid_presentation_data, StaffFullPercent==0))` nursing homes have **zero healthcare staff fully up to date on covid vaccines**.
+* `r nrow(subset(covid_presentation_data, StaffFullPercent==0))` nursing homes have zero healthcare staff fully up to date on covid vaccines.
 * `r nrow(subset(covid_presentation_data, StaffFullPercent==100))` nursing homes have all healthcare staff fully up to date on covid vaccines.
-* `r nrow(subset(covid_presentation_data, ResidentFullPercent==0))` nursing homes have **zero residents fully up to date on covid vaccines**.
+* `r round(100*sum(covid_geo$"Number of Healthcare Personnel Eligible to Work in this Facility for At Least 1 Day This Week Up to Date with COVID-19 Vaccines", na.rm=TRUE)/sum(covid_geo$"Number of All Healthcare Personnel Eligible to Work in this Facility for At Least 1 Day This Week", na.rm=TRUE))`% of healthcare staff nationwide are fully up to date on covid vaccines.
+* `r round(100*sum(covid_geo$"Number of All Healthcare Personnel Eligible to Work in this Facility for At Least 1 Day This Week who Received a Completed COVID-19 Vaccination at Any Time", na.rm=TRUE)/sum(covid_geo$"Number of All Healthcare Personnel Eligible to Work in this Facility for At Least 1 Day This Week", na.rm=TRUE))`% of healthcare staff nationwide ever got vaccinated for covid.
+
+* `r nrow(subset(covid_presentation_data, ResidentFullPercent==0))` nursing homes have zero residents fully up to date on covid vaccines.
 * `r nrow(subset(covid_presentation_data, ResidentFullPercent==100))` nursing homes have all residents fully up to date on covid vaccines.
+* **`r round(100*sum(covid_presentation_data$'Beds Occupied' * covid_presentation_data$'Current Residents Up to Date with Covid Vaccines', na.rm=TRUE)/sum(covid_presentation_data$'Beds Occupied', na.rm=TRUE), 1)`% of nursing home beds are occupied by residents who are fully up to date on covid vaccines**.
