@@ -17,6 +17,17 @@ get_data <- function(year=2023) {
 	return(covid_data)
 }
 
+aggregate_by_state_and_week <- function(covid_data) {
+	covid_data <- subset(covid_data, `Submitted Data` == "Y" & `Passed Quality Assurance Check` == "Y")
+	result <- covid_data |> group_by(`Week Ending`, `Provider State`) |> summarize(
+		weekly_resident_covid_deaths = sum(`Residents Weekly COVID-19 Deaths`, na.rm = TRUE),
+		weekly_resident_all_deaths = sum(`Residents Weekly All Deaths`, na.rm=TRUE), 
+		weekly_all_beds=sum(`Number of All Beds`, na.rm=TRUE), weekly_occupied_beds = sum(`Total Number of Occupied Beds`, na.rm=TRUE), 
+		weekly_resident_confirmed_covid_cases = sum(`Residents Weekly Confirmed COVID-19`, na.rm=TRUE), 
+		weekly_staff_confirmed_covid_cases = sum(`Staff Weekly Confirmed COVID-19`, na.rm=TRUE)) |> rename(State = `Provider State`)
+	return(result)
+}
+
 clean_data <- function(covid_data) {
 	covid_data <- subset(covid_data, `Submitted Data` == "Y" & `Passed Quality Assurance Check` == "Y")
 	

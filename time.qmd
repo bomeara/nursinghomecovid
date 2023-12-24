@@ -1,0 +1,48 @@
+---
+title: "Time"
+---
+
+```{r setup, include=FALSE, cache=TRUE}
+source('functions.R')
+library(targets)
+tar_load_everything(strict=FALSE)
+final_data <- SharedData$new(covid_by_time) # all times
+
+```
+
+These show measures over time, using data from <https://data.cms.gov/covid-19/covid-19-nursing-home-data> but summed across facilities (see that site's FAQ for details of the data, including how covid status is assessed). You can filter by state by selecting states below (note it might look odd if only a few states are selected due to how plotly fills in polygons).
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+crosstalk::filter_checkbox("State", "State", final_data, ~State, columns=10)
+```
+
+### Weekly resident Covid-19 deaths
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+library(plotly)
+fig <- plot_ly(final_data, x = ~`Week Ending`, y = ~`weekly_resident_covid_deaths`, type = 'scatter', mode = 'lines', color=~`State`, stackgroup='one') |> layout(showlegend = FALSE) |> hide_colorbar() |> layout(yaxis = list(title = "Weekly resident Covid-19 deaths"), xaxis = list(title = 'Week Ending'))
+fig
+```
+
+### Weekly resident all deaths
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+fig <- plot_ly(final_data, x = ~`Week Ending`, y = ~`weekly_resident_all_deaths`, type = 'scatter', mode = 'lines', color=~`State`, stackgroup='one') |> layout(showlegend = FALSE) |> hide_colorbar() |> layout(yaxis = list(title = "Weekly resident all deaths"), xaxis = list(title = 'Week Ending'))
+fig
+```
+
+### Weekly resident confirmed Covid-19 cases
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+fig <- plot_ly(final_data, x = ~`Week Ending`, y = ~`weekly_resident_confirmed_covid_cases`, type = 'scatter', mode = 'lines', color=~`State`, stackgroup='one') |> layout(showlegend = FALSE) |> hide_colorbar() |> layout(yaxis = list(title = "Weekly resident confirmed covid cases"), xaxis = list(title = 'Week Ending'))
+fig
+```
+
+### Weekly staff confirmed Covid-19 cases
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+fig <- plot_ly(final_data, x = ~`Week Ending`, y = ~`weekly_staff_confirmed_covid_cases`, type = 'scatter', mode = 'lines', color=~`State`, stackgroup='one') |> layout(showlegend = FALSE) |> hide_colorbar() |> layout(yaxis = list(title = "Weekly staff confirmed covid cases"), xaxis = list(title = 'Week Ending'))
+fig
+```
