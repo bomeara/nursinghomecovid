@@ -114,7 +114,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#to-find-a-facility" id="toc-to-find-a-facility" class="nav-link active" data-scroll-target="#to-find-a-facility">To find a facility</a></li>
+  <li><a href="#to-find-information-on-a-region" id="toc-to-find-information-on-a-region" class="nav-link" data-scroll-target="#to-find-information-on-a-region">To find information on a region</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -138,10 +145,25 @@ ul.task-list li input[type="checkbox"] {
 
 <p>This uses data from <a href="https://data.cms.gov/covid-19/covid-19-nursing-home-data" class="uri">https://data.cms.gov/covid-19/covid-19-nursing-home-data</a> .</p>
 <p>The site is made with quarto and R: the source code is at <a href="https://github.com/bomeara/nursinghomecovid" class="uri">https://github.com/bomeara/nursinghomecovid</a> . It uses the targets, readr, tidyverse, tidygeocoder, reactable, stringr, crosstalk, plotly, and leaflet packages.</p>
-<p>It was made by Brian O’Meara. I’m a biologist, but this is outside my area of expertise: I do not know what vaccination rate is ideal in this setting, what covid rates are considered an acceptable tradeoff, biases in the reporting, and more. I’m just trying to make the data more accessible so that families can make informed decisions and journalists can dig into the data to see if there is anything of interest (facilities doing an exceptionally good or bad job, for example). I came across this dataset online and was surprised at how many facilities have no residents nor health care workers fully vaccinated against covid-19, given over 170,000 deaths in nursing homes in the US (as of Dec 22, 2023). To get in touch with an issue, go to <a href="https://github.com/bomeara/nursinghomecovid/issues" class="uri">https://github.com/bomeara/nursinghomecovid/issues</a>. For issues with the original data, go to <a href="https://data.cms.gov/covid-19/covid-19-nursing-home-data" class="uri">https://data.cms.gov/covid-19/covid-19-nursing-home-data</a>.</p>
-<p>To run this yourself, go to <a href="https://github.com/bomeara/nursinghomecovid" class="uri">https://github.com/bomeara/nursinghomecovid</a>, clone the repository, and then source <code>run.R</code> to run quarto to make the site. Make sure you have the packages listed above installed.</p>
+<p>It was made by Brian O’Meara. I’m a biologist, but this is outside my area of expertise: I do not know what vaccination rate is ideal in this setting, what covid rates are considered an acceptable tradeoff, biases in the reporting, and more. I’m just trying to make the data more accessible so that families can make informed decisions and journalists can dig into the data to see if there is anything of interest (facilities doing an exceptionally good or bad job, for example). I came across this dataset online and was surprised at how many facilities have no residents nor health care workers fully vaccinated against covid-19, given over 170,000 deaths in nursing homes in the US (as of Dec 22, 2023).</p>
+<p>To get in touch with an issue, go to <a href="https://github.com/bomeara/nursinghomecovid/issues" class="uri">https://github.com/bomeara/nursinghomecovid/issues</a>. For issues with the original data, go to <a href="https://data.cms.gov/covid-19/covid-19-nursing-home-data" class="uri">https://data.cms.gov/covid-19/covid-19-nursing-home-data</a>.</p>
+<p>To run this yourself, go to <a href="https://github.com/bomeara/nursinghomecovid" class="uri">https://github.com/bomeara/nursinghomecovid</a>, clone the repository, and then source <code>run.R</code> from within R to run quarto to make the site. Make sure you have the packages listed above installed. This will download the data, process it in R, and make the site.</p>
+<p>To use the original data, go to <a href="https://data.cms.gov/covid-19/covid-19-nursing-home-data" class="uri">https://data.cms.gov/covid-19/covid-19-nursing-home-data</a> and download the CSV file for the year you want. It should be able to be opened in Microsoft Excel, Apple Numbers, or similar. If you’re a journalist or researcher, please use the original data – I try to do minimal processing of the data, but it’s still not as secure as using the original.</p>
+<section id="to-find-a-facility" class="level3">
+<h3 class="anchored" data-anchor-id="to-find-a-facility">To find a facility</h3>
+<ul>
+<li>Go to <a href="table.html">table</a>. You can search for the facility name, start typing it in the first column, or first filter by state or county.</li>
+</ul>
+</section>
+<section id="to-find-information-on-a-region" class="level3">
+<h3 class="anchored" data-anchor-id="to-find-information-on-a-region">To find information on a region</h3>
+<ul>
+<li>One approach is to go to <a href="table.html">table</a> and filter by state or county.</li>
+<li>Another approach is to go to <a href="map.html">map</a> and zoom in on the region of interest. You can click on a facility to get more information.</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
