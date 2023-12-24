@@ -21,4 +21,4 @@ The tabs above have different views of the data. **If you want to look at detail
 
 * `r nrow(subset(covid_presentation_data, ResidentFullPercent==0))` nursing homes have zero residents fully up to date on covid vaccines.
 * `r nrow(subset(covid_presentation_data, ResidentFullPercent==100))` nursing homes have all residents fully up to date on covid vaccines.
-* **`r round(100*sum(covid_presentation_data$'Beds Occupied' * covid_presentation_data$'Current Residents Up to Date with Covid Vaccines', na.rm=TRUE)/sum(covid_presentation_data$'Beds Occupied', na.rm=TRUE), 1)`% of nursing home beds are occupied by residents who are fully up to date on covid vaccines**.
+* **Only `r round(100*sum(covid_presentation_data$'Beds Occupied' * covid_presentation_data$'Current Residents Up to Date with Covid Vaccines', na.rm=TRUE)/sum(covid_presentation_data$'Beds Occupied', na.rm=TRUE), 1)`% of nursing home residents are fully up to date on covid vaccines**.
