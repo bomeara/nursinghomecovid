@@ -14,6 +14,7 @@ get_data <- function(year=2023) {
 	file_name <- paste0('faclevel_', year, '.csv')
 	covid_data <- readr::read_csv(unz(tmp, file_name))
 	file.remove(tmp)
+	print(max(covid_data$`Week Ending`))
 	return(covid_data)
 }
 
