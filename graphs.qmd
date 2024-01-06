@@ -23,7 +23,7 @@ library(leaflet)
 my_palette <- colorNumeric( "viridis", domain=seq(from=0, to=1, length.out=101), reverse=TRUE)(seq(from=0, to=1, length.out=101))
 
 library(plotly)
-fig <- plot_ly(final_data, x = ~`ResidentFullPercent`, y = ~`Total Resident Covid Deaths Per 1,000 Residents`, color = ~`Current Healthcare Personnel Up to Date with Covid Vaccines`, colors=my_palette, type = 'scatter', mode = 'markers', text = ~PopupLabel, hoverinfo = 'text', marker = list(size = 10, opacity = 0.8)) |> layout(showlegend = FALSE) |> hide_colorbar() 
+fig <- plot_ly(final_data, x = ~`ResidentFullPercent`, y = ~`Total Resident Covid Deaths Per 1,000 Residents`, color = ~`Current Healthcare Personnel Up to Date with Covid Vaccines`, colors=my_palette, type = 'scatter', mode = 'markers', text = ~PopupLabel, hoverinfo = 'text', marker = list(size = 2, opacity = 0.8)) |> layout(showlegend = FALSE) |> hide_colorbar() 
 fig <- layout(fig, yaxis = list(type = "log"), xaxis = list(title = 'Percentage of nursing home residents fully vaccinated'))
 fig <- layout(fig, yaxis = list(title = 'Total resident covid deaths per 1,000 residents'))
 fig
@@ -41,12 +41,22 @@ This may also be due to a data entry error on the part of the facility – for e
 
 :::
 
+---
+
+Next is a plot of current covid cases in nursing homes. 
+
+## Cases currently in nursing homes
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+fig <- plot_ly(final_data, x = ~`Inferred Percentage of Current Healthcare Personnel Who Currently Have Covid`, y = ~`Inferred Percentage of Current Residents Who Currently Have Covid`, type = 'scatter', mode = 'markers', text = ~PopupLabel, hoverinfo = 'text', marker = list(size = 2, opacity = 0.8)) |> layout(showlegend = FALSE) |> hide_colorbar() 
+fig <- layout(fig, xaxis = list(title = 'Percentage of healthcare staff with covid this week'))
+fig <- layout(fig, yaxis = list(title = 'Percentage of residents with covid this week'))
+fig
+```
 
 ---
 
 Next are a histogram showing the counts of nursing homes with different proportions of healthcare staff or residents fully vaccinated fully vaccinated for covid.
-
-
 
 ## Nursing home healthcare staff full vaccination rates
 

@@ -22,3 +22,12 @@ The tabs above have different views of the data. **If you want to look at detail
 * `r nrow(subset(covid_presentation_data, ResidentFullPercent==0))` nursing homes have zero residents fully up to date on covid vaccines.
 * `r nrow(subset(covid_presentation_data, ResidentFullPercent==100))` nursing homes have all residents fully up to date on covid vaccines.
 * **Only `r round(100*sum(covid_presentation_data$'Beds Occupied' * covid_presentation_data$'Current Residents Up to Date with Covid Vaccines', na.rm=TRUE)/sum(covid_presentation_data$'Beds Occupied', na.rm=TRUE), 1)`% of nursing home residents are fully up to date on covid vaccines**.
+
+### Current inferred covid infection rates
+
+This is based on dividing the weekly number of cases in healthcare staff or residents by the number in that facility over the week.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+fig <- plot_ly(covid_by_time_US_total, x = ~`Week Ending`, y = ~`weekly_resident_covid_percentage`, type = 'scatter', mode = 'lines+markers', name="Residents") |> add_trace(y = ~weekly_staff_covid_percentage, name = 'Staff', mode = 'lines+markers') |> layout(yaxis = list(title = "Inferred percentage with covid"), xaxis = list(title = 'Week Ending'))
+fig
+```

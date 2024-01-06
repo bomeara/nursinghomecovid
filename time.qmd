@@ -40,9 +40,24 @@ fig <- plot_ly(final_data, x = ~`Week Ending`, y = ~`weekly_resident_confirmed_c
 fig
 ```
 
+### Weekly resident confirmed Covid-19 cases as a percentage of all residents
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+fig <- plot_ly(final_data, x = ~`Week Ending`, y = ~`weekly_resident_covid_percentage`, type = 'scatter', mode = 'lines+markers', color=~`State`) |> layout(showlegend = FALSE) |> hide_colorbar() |> layout(yaxis = list(title = "Inferred percent of residents with covid"), xaxis = list(title = 'Week Ending'))
+fig
+```
+
 ### Weekly staff confirmed Covid-19 cases
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
 fig <- plot_ly(final_data, x = ~`Week Ending`, y = ~`weekly_staff_confirmed_covid_cases`, type = 'scatter', mode = 'lines', color=~`State`, stackgroup='one') |> layout(showlegend = FALSE) |> hide_colorbar() |> layout(yaxis = list(title = "Weekly staff confirmed covid cases"), xaxis = list(title = 'Week Ending'))
+fig
+```
+
+
+### Weekly staff confirmed Covid-19 cases as a percentage of all staff
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+fig <- plot_ly(final_data, x = ~`Week Ending`, y = ~`weekly_staff_covid_percentage`, type = 'scatter', mode = 'lines+markers', color=~`State`) |> layout(showlegend = FALSE) |> hide_colorbar() |> layout(yaxis = list(title = "Inferred percent of health care staff with covid"), xaxis = list(title = 'Week Ending'))
 fig
 ```

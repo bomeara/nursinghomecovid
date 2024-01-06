@@ -14,12 +14,12 @@ This is a map showing all the facilities that had data which the [federal govern
 
 {{< include filter.qmd >}}
 
+### Percentage of healthcare staff fully vaccinated for covid
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
 library(leaflet)
 leaflet(final_data) |>
   leaflet::addProviderTiles(providers$CartoDB.Positron)  |> 
   leaflet::setView(lng = -98, lat = 39, zoom = 4) |>
-  leaflet::addCircleMarkers(data = final_data, lng = ~Longitude, lat = ~Latitude, popup = ~PopupLabel, radius=3, fillOpacity=0.5, color=~MarkerColor)
-
-  #addMarkers(data = all_colleges, lng = ~Longitude, lat = ~Latitude, popup = ~PopupLabel, clusterOptions = markerClusterOptions())
+  leaflet::addCircleMarkers(data = final_data, lng = ~Longitude, lat = ~Latitude, popup = ~PopupLabel, radius=.3, fillOpacity=0.5, color=~MarkerColor)
 ```
