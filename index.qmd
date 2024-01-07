@@ -25,9 +25,9 @@ The tabs above have different views of the data. **If you want to look at detail
 
 ### Current inferred covid infection rates
 
-This is based on dividing the weekly number of cases in healthcare staff or residents by the number in that facility over the week.
+This is based on dividing the weekly number of cases in healthcare staff or residents by the number in that facility over the week. There may be a lot of biases here: for example, if not every resident and staff member is tested every week, especially if some facilities never test or report, then the rate will be too low. There may also be issues if, say, a resident or staff member moves between facilities -- they could appear in the data twice.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
-fig <- plot_ly(covid_by_time_US_total, x = ~`Week Ending`, y = ~`weekly_resident_covid_percentage`, type = 'scatter', mode = 'lines+markers', name="Residents") |> add_trace(y = ~weekly_staff_covid_percentage, name = 'Staff', mode = 'lines+markers') |> layout(yaxis = list(title = "Inferred percentage with covid"), xaxis = list(title = 'Week Ending'))
+fig <- plot_ly(covid_by_time_US_total, x = ~`Week Ending`, y = ~`weekly_resident_covid_percentage`, type = 'scatter', mode = 'lines+markers', name="Residents") |> add_trace(y = ~weekly_staff_covid_percentage, name = 'Staff', mode = 'lines+markers') |> layout(yaxis = list(title = "Inferred percentage with covid"), xaxis = list(title = 'Week Ending')) |> layout(legend = list(x = 0.1, y = 0.9))
 fig
 ```
