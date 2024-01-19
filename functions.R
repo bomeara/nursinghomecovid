@@ -6,6 +6,7 @@ library(stringr)
 library(crosstalk)
 library(leaflet)
 library(plotly)
+library(lubridate)
 
 get_data <- function(year=2023) {
 	tmp <- tempfile(fileext = ".zip")
@@ -14,7 +15,9 @@ get_data <- function(year=2023) {
 	file_name <- paste0('faclevel_', year, '.csv')
 	covid_data <- readr::read_csv(unz(tmp, file_name))
 	file.remove(tmp)
+	covid_data$`Week Ending` <- lubridate::mdy(covid_data$`Week Ending`)
 	print(max(covid_data$`Week Ending`))
+	
 	return(covid_data)
 }
 
