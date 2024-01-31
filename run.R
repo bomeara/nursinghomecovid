@@ -9,3 +9,8 @@ system("quarto render")
 
 system("cp CNAME docs/CNAME")
 system("open docs/index.html")
+
+system("git add .")
+system("git commit -m 'auto-update'")
+system("git push")
+
