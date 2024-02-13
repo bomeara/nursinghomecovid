@@ -67,14 +67,6 @@ fig <- plot_ly(final_data, x=~StaffFullPercent) |> add_histogram() |> layout(sho
 fig
 ```
 
-## Nursing home healthcare staff who have ever received a covid vaccine
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
-
-fig <- plot_ly(final_data, x=~StaffEverVaxPercent) |> add_histogram() |> layout(showlegend = FALSE) |> hide_colorbar() |> layout(xaxis = list(title = 'Percentage of nursing home healthcare staff ever vaccinated')) |> layout(yaxis = list(title = 'Count of nursing homes'))
-
-fig
-```
 
 ## Nursing home resident full vaccination rates
 

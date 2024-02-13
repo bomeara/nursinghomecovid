@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -45,7 +45,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -54,6 +60,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -74,12 +81,11 @@ ul.task-list li input[type="checkbox"] {
 
 <body class="nav-fixed">
 
-
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Nursing home covid</span>
     </a>
@@ -91,33 +97,33 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./map.html" rel="" target="">
- <span class="menu-text">Map</span></a>
+    <a class="nav-link" href="./map.html"> 
+<span class="menu-text">Map</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./graphs.html" rel="" target="">
- <span class="menu-text">Graphs</span></a>
+    <a class="nav-link" href="./graphs.html"> 
+<span class="menu-text">Graphs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./table.html" rel="" target="">
- <span class="menu-text">Table</span></a>
+    <a class="nav-link" href="./table.html"> 
+<span class="menu-text">Table</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./time.html" rel="" target="">
- <span class="menu-text">Time</span></a>
+    <a class="nav-link" href="./time.html"> 
+<span class="menu-text">Time</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -152,25 +158,27 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
 
-<p>The US Centers for Medicare and Medicaid Services puts out a dataset of covid incidence, deaths, and vaccination at 13742 US nursing homes. The data are available at <a href="https://data.cms.gov/covid-19/covid-19-nursing-home-data" class="uri">https://data.cms.gov/covid-19/covid-19-nursing-home-data</a>. It has info on individual nursing homes, but it can be a little hard to use. I am making it more usable here, trying to make it easier for folks to see how people in nursing homes are being cared for. This uses federal data from the week ending 2024-01-21.</p>
+
+<p>The US Centers for Medicare and Medicaid Services puts out a dataset of covid incidence, deaths, and vaccination at 13042 US nursing homes. The data are available at <a href="https://data.cms.gov/covid-19/covid-19-nursing-home-data" class="uri">https://data.cms.gov/covid-19/covid-19-nursing-home-data</a>. It has info on individual nursing homes, but it can be a little hard to use. I am making it more usable here, trying to make it easier for folks to see how people in nursing homes are being cared for. This uses federal data from the week ending 2024-01-28.</p>
 <p>The tabs above have different views of the data. <strong>If you want to look at detail on a particular facility, it is probably easiest to use the <a href="map.html">map</a> or <a href="table.html">table</a> pages</strong>. Some quick summaries:</p>
 <ul>
-<li><p>4399 nursing homes have zero healthcare staff fully up to date on covid vaccines.</p></li>
-<li><p>184 nursing homes have all healthcare staff fully up to date on covid vaccines.</p></li>
-<li><p>15% of nursing home healthcare staff nationwide are fully up to date on covid vaccines.</p></li>
-<li><p>2295 nursing homes have zero residents fully up to date on covid vaccines.</p></li>
-<li><p>88 nursing homes have all residents fully up to date on covid vaccines.</p></li>
-<li><p><strong>Only 38% of nursing home residents are fully up to date on covid vaccines</strong>.</p></li>
+<li><p>4191 nursing homes have zero healthcare staff fully up to date on covid vaccines.</p></li>
+<li><p>141 nursing homes have all healthcare staff fully up to date on covid vaccines.</p></li>
+<li><p>13% of nursing home healthcare staff nationwide are fully up to date on covid vaccines.</p></li>
+<li><p>2028 nursing homes have zero residents fully up to date on covid vaccines.</p></li>
+<li><p>78 nursing homes have all residents fully up to date on covid vaccines.</p></li>
+<li><p><strong>Only 38.4% of nursing home residents are fully up to date on covid vaccines</strong>.</p></li>
 </ul>
 <section id="current-inferred-covid-infection-rates" class="level3">
 <h3 class="anchored" data-anchor-id="current-inferred-covid-infection-rates">Current inferred covid infection rates</h3>
 <p>This is based on dividing the weekly number of cases in healthcare staff or residents by the number in that facility over the week. There may be a lot of biases here: for example, if not every resident and staff member is tested every week, especially if some facilities never test or report, then the rate will be too low. There may also be issues if, say, a resident or staff member moves between facilities – they could appear in the data twice.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-d2c98b2e2ba34643daae" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-d2c98b2e2ba34643daae">{"x":{"visdat":{"60f66ef6e12b":["function () ","plotlyVisDat"]},"cur_data":"60f66ef6e12b","attrs":{"60f66ef6e12b":{"x":{},"y":{},"mode":"lines+markers","name":"Residents","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"60f66ef6e12b.1":{"x":{},"y":{},"mode":"lines+markers","name":"Staff","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Inferred percentage with covid"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Week Ending"},"legend":{"x":0.10000000000000001,"y":0.90000000000000002},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["2023-01-01","2023-01-08","2023-01-15","2023-01-22","2023-01-29","2023-02-05","2023-02-12","2023-02-19","2023-02-26","2023-03-05","2023-03-12","2023-03-19","2023-03-26","2023-04-02","2023-04-09","2023-04-16","2023-04-23","2023-04-30","2023-05-07","2023-05-14","2023-05-21","2023-05-28","2023-06-04","2023-06-11","2023-06-18","2023-06-25","2023-07-02","2023-07-09","2023-07-16","2023-07-23","2023-07-30","2023-08-06","2023-08-13","2023-08-20","2023-08-27","2023-09-03","2023-09-10","2023-09-17","2023-09-24","2023-10-01","2023-10-08","2023-10-15","2023-10-22","2023-10-29","2023-11-05","2023-11-12","2023-11-19","2023-11-26","2023-12-03","2023-12-10","2023-12-17","2023-12-24","2023-12-31","2024-01-07","2024-01-14","2024-01-21"],"y":[1.6000000000000001,1.7,1.28,1.0600000000000001,0.96999999999999997,0.93000000000000005,0.90000000000000002,0.88,0.91000000000000003,0.85999999999999999,0.69999999999999996,0.65000000000000002,0.62,0.54000000000000004,0.51000000000000001,0.44,0.40000000000000002,0.34999999999999998,0.33000000000000002,0.29999999999999999,0.23000000000000001,0.23000000000000001,0.23000000000000001,0.20999999999999999,0.20999999999999999,0.23000000000000001,0.22,0.23000000000000001,0.25,0.28000000000000003,0.34999999999999998,0.46000000000000002,0.56999999999999995,0.69999999999999996,0.81000000000000005,0.89000000000000001,0.93999999999999995,0.96999999999999997,0.89000000000000001,0.89000000000000001,0.82999999999999996,0.77000000000000002,0.84999999999999998,0.90000000000000002,0.89000000000000001,1.1200000000000001,1.24,1.23,1.3100000000000001,1.3200000000000001,1.24,1.28,1.3,1.3,1.21,0.93000000000000005],"mode":"lines+markers","name":"Residents","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2023-01-01","2023-01-08","2023-01-15","2023-01-22","2023-01-29","2023-02-05","2023-02-12","2023-02-19","2023-02-26","2023-03-05","2023-03-12","2023-03-19","2023-03-26","2023-04-02","2023-04-09","2023-04-16","2023-04-23","2023-04-30","2023-05-07","2023-05-14","2023-05-21","2023-05-28","2023-06-04","2023-06-11","2023-06-18","2023-06-25","2023-07-02","2023-07-09","2023-07-16","2023-07-23","2023-07-30","2023-08-06","2023-08-13","2023-08-20","2023-08-27","2023-09-03","2023-09-10","2023-09-17","2023-09-24","2023-10-01","2023-10-08","2023-10-15","2023-10-22","2023-10-29","2023-11-05","2023-11-12","2023-11-19","2023-11-26","2023-12-03","2023-12-10","2023-12-17","2023-12-24","2023-12-31","2024-01-07","2024-01-14","2024-01-21"],"y":[0.72999999999999998,0.71999999999999997,0.54000000000000004,0.47999999999999998,0.45000000000000001,0.45000000000000001,0.42999999999999999,0.40999999999999998,0.40000000000000002,0.37,0.31,0.28000000000000003,0.28000000000000003,0.23999999999999999,0.22,0.17999999999999999,0.16,0.14999999999999999,0.14000000000000001,0.12,0.10000000000000001,0.11,0.10000000000000001,0.10000000000000001,0.080000000000000002,0.080000000000000002,0.089999999999999997,0.10000000000000001,0.11,0.14000000000000001,0.14999999999999999,0.20999999999999999,0.27000000000000002,0.32000000000000001,0.39000000000000001,0.42999999999999999,0.44,0.41999999999999998,0.38,0.37,0.33000000000000002,0.29999999999999999,0.33000000000000002,0.33000000000000002,0.34000000000000002,0.41999999999999998,0.47999999999999998,0.46999999999999997,0.55000000000000004,0.56000000000000005,0.55000000000000004,0.60999999999999999,0.64000000000000001,0.62,0.53000000000000003,0.38],"mode":"lines+markers","name":"Staff","type":"scatter","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-32488884ef5e29a8fca8" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-32488884ef5e29a8fca8">{"x":{"visdat":{"eb424b32637":["function () ","plotlyVisDat"]},"cur_data":"eb424b32637","attrs":{"eb424b32637":{"x":{},"y":{},"mode":"lines+markers","name":"Residents","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"eb424b32637.1":{"x":{},"y":{},"mode":"lines+markers","name":"Staff","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Inferred percentage with covid"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Week Ending"},"legend":{"x":0.10000000000000001,"y":0.90000000000000002},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["2023-01-01","2023-01-08","2023-01-15","2023-01-22","2023-01-29","2023-02-05","2023-02-12","2023-02-19","2023-02-26","2023-03-05","2023-03-12","2023-03-19","2023-03-26","2023-04-02","2023-04-09","2023-04-16","2023-04-23","2023-04-30","2023-05-07","2023-05-14","2023-05-21","2023-05-28","2023-06-04","2023-06-11","2023-06-18","2023-06-25","2023-07-02","2023-07-09","2023-07-16","2023-07-23","2023-07-30","2023-08-06","2023-08-13","2023-08-20","2023-08-27","2023-09-03","2023-09-10","2023-09-17","2023-09-24","2023-10-01","2023-10-08","2023-10-15","2023-10-22","2023-10-29","2023-11-05","2023-11-12","2023-11-19","2023-11-26","2023-12-03","2023-12-10","2023-12-17","2023-12-24","2023-12-31","2024-01-07","2024-01-14","2024-01-21","2024-01-28"],"y":[1.6000000000000001,1.7,1.28,1.0600000000000001,0.96999999999999997,0.93000000000000005,0.90000000000000002,0.88,0.91000000000000003,0.85999999999999999,0.69999999999999996,0.65000000000000002,0.62,0.54000000000000004,0.51000000000000001,0.44,0.40000000000000002,0.34999999999999998,0.33000000000000002,0.29999999999999999,0.23000000000000001,0.23000000000000001,0.23000000000000001,0.20999999999999999,0.20999999999999999,0.23000000000000001,0.22,0.23000000000000001,0.25,0.28000000000000003,0.34000000000000002,0.46000000000000002,0.56000000000000005,0.69999999999999996,0.80000000000000004,0.89000000000000001,0.93999999999999995,0.96999999999999997,0.89000000000000001,0.89000000000000001,0.82999999999999996,0.77000000000000002,0.84999999999999998,0.90000000000000002,0.89000000000000001,1.1200000000000001,1.24,1.23,1.3100000000000001,1.3100000000000001,1.24,1.28,1.3,1.3,1.21,0.98999999999999999,0.78000000000000003],"mode":"lines+markers","name":"Residents","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2023-01-01","2023-01-08","2023-01-15","2023-01-22","2023-01-29","2023-02-05","2023-02-12","2023-02-19","2023-02-26","2023-03-05","2023-03-12","2023-03-19","2023-03-26","2023-04-02","2023-04-09","2023-04-16","2023-04-23","2023-04-30","2023-05-07","2023-05-14","2023-05-21","2023-05-28","2023-06-04","2023-06-11","2023-06-18","2023-06-25","2023-07-02","2023-07-09","2023-07-16","2023-07-23","2023-07-30","2023-08-06","2023-08-13","2023-08-20","2023-08-27","2023-09-03","2023-09-10","2023-09-17","2023-09-24","2023-10-01","2023-10-08","2023-10-15","2023-10-22","2023-10-29","2023-11-05","2023-11-12","2023-11-19","2023-11-26","2023-12-03","2023-12-10","2023-12-17","2023-12-24","2023-12-31","2024-01-07","2024-01-14","2024-01-21","2024-01-28"],"y":[0.72999999999999998,0.71999999999999997,0.54000000000000004,0.47999999999999998,0.45000000000000001,0.45000000000000001,0.42999999999999999,0.40999999999999998,0.40000000000000002,0.37,0.31,0.28000000000000003,0.28000000000000003,0.23999999999999999,0.22,0.17999999999999999,0.16,0.14999999999999999,0.14000000000000001,0.12,0.10000000000000001,0.11,0.10000000000000001,0.10000000000000001,0.080000000000000002,0.080000000000000002,0.089999999999999997,0.10000000000000001,0.11,0.14000000000000001,0.14999999999999999,0.20999999999999999,0.27000000000000002,0.32000000000000001,0.39000000000000001,0.42999999999999999,0.44,0.41999999999999998,0.38,0.37,0.33000000000000002,0.29999999999999999,0.33000000000000002,0.34000000000000002,0.34000000000000002,0.41999999999999998,0.47999999999999998,0.46999999999999997,0.55000000000000004,0.56000000000000005,0.55000000000000004,0.60999999999999999,0.64000000000000001,0.62,0.53000000000000003,0.40999999999999998,0.34999999999999998],"mode":"lines+markers","name":"Staff","type":"scatter","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
@@ -257,10 +265,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -270,8 +277,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -284,6 +300,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -327,6 +462,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -352,6 +488,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -412,6 +574,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
