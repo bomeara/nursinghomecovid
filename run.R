@@ -1,5 +1,5 @@
 source("_targets.R")
-tar_invalidate(everything())
+#tar_invalidate(everything())
 try({tar_prune()}, silent=TRUE)
 tar_make()
 

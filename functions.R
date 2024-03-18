@@ -83,7 +83,6 @@ make_presentation_data <- function(clean_data) {
 		"Provider Zip Code",
 		"Percentage of Current Residents Up to Date with COVID-19 Vaccines",
 		"Percentage of Current Healthcare Personnel Up to Date with COVID-19 Vaccines",
-		"Percentage of Current Healthcare Personnel who Received a Completed COVID-19 Vaccination at Any Time" ,
 		"Weekly Resident Confirmed COVID-19 Cases Per 1,000 Residents",
 		"Weekly Resident COVID-19 Deaths Per 1,000 Residents",
 		"Total Resident COVID-19 Deaths Per 1,000 Residents",
@@ -120,7 +119,6 @@ make_presentation_data <- function(clean_data) {
 		"Weekly Resident Covid Cases Per 1,000 Residents" = "Weekly Resident Confirmed COVID-19 Cases Per 1,000 Residents",
 		"Weekly Resident Covid Deaths Per 1,000 Residents" = "Weekly Resident COVID-19 Deaths Per 1,000 Residents",
 		"Total Resident Covid Deaths Per 1,000 Residents" = "Total Resident COVID-19 Deaths Per 1,000 Residents",
-		"Current Healthcare Personnel Ever Vaccinated for Covid" = "Percentage of Current Healthcare Personnel who Received a Completed COVID-19 Vaccination at Any Time" ,
 		"Current Residents Up to Date with Covid Vaccines" = "Percentage of Current Residents Up to Date with COVID-19 Vaccines",
 		"Current Healthcare Personnel Up to Date with Covid Vaccines" = "Percentage of Current Healthcare Personnel Up to Date with COVID-19 Vaccines"
 	)
@@ -140,15 +138,13 @@ make_presentation_data <- function(clean_data) {
 	
 	presentation_data$`Current Residents Up to Date with Covid Vaccines` <- presentation_data$`Current Residents Up to Date with Covid Vaccines`/100
 	presentation_data$`Current Healthcare Personnel Up to Date with Covid Vaccines` <- presentation_data$`Current Healthcare Personnel Up to Date with Covid Vaccines`/100
-	presentation_data$`Current Healthcare Personnel Ever Vaccinated for Covid` <- presentation_data$`Current Healthcare Personnel Ever Vaccinated for Covid`/100
 	
 	presentation_data <- presentation_data[order(presentation_data$`Current Residents Up to Date with Covid Vaccines`, presentation_data$`Current Healthcare Personnel Up to Date with Covid Vaccines`, presentation_data$`Beds Occupied` , decreasing=TRUE),]
 	
-	presentation_data$PopupLabel <- paste0(presentation_data$Facility, '<br />', presentation_data$Address, ", ", presentation_data$City, ", ", presentation_data$State, "<br />", "<br />", "Staff Up to Date with Covid Vaccines: ", 100*presentation_data$`Current Healthcare Personnel Up to Date with Covid Vaccines`, "%", "<br />", "Staff Ever Vaccinated for Covid: ", 100*presentation_data$`Current Healthcare Personnel Ever Vaccinated for Covid`, "%", "<br />", "Residents Up to Date with Covid Vaccines: ", 100*presentation_data$`Current Residents Up to Date with Covid Vaccines`, "%", "<br /><br />",  "Residents Weekly Confirmed Covid: ", presentation_data$`Residents Weekly Confirmed Covid`, "<br />", "<br />", "Residents Weekly Covid Deaths: ", presentation_data$`Residents Weekly Covid Deaths`, "<br />", "Residents Weekly All Deaths: ", presentation_data$`Residents Weekly All Deaths`, "<br />", "Residents Total Covid Deaths: ", presentation_data$`Residents Total Covid Deaths`,  "<br />", "Residents Total All Deaths: ", presentation_data$`Residents Total All Deaths`, "<br /><br />", "Beds All: ", presentation_data$`Beds All`, "<br />", "Beds Occupied: ", presentation_data$`Beds Occupied`, "<br />", "Weekly Resident Covid Cases Per 1,000 Residents: ", presentation_data$`Weekly Resident Covid Cases Per 1,000 Residents`, "<br />", "Weekly Resident Covid Deaths Per 1,000 Residents: ", presentation_data$`Weekly Resident Covid Deaths Per 1,000 Residents`, "<br />", "Total Resident Covid Deaths Per 1,000 Residents: ", presentation_data$`Total Resident Covid Deaths Per 1,000 Residents`, "<br />", "Staff % with covid this week: ", presentation_data$`Inferred Percentage of Current Healthcare Personnel Who Currently Have Covid`, "%", "<br />",  "Resident % with covid this week: ", presentation_data$`Inferred Percentage of Current Residents Who Currently Have Covid`, "%", "<br /><br />", "Week Ending: ", presentation_data$`Week Ending`)
+	presentation_data$PopupLabel <- paste0(presentation_data$Facility, '<br />', presentation_data$Address, ", ", presentation_data$City, ", ", presentation_data$State, "<br />", "<br />", "Staff Up to Date with Covid Vaccines: ", 100*presentation_data$`Current Healthcare Personnel Up to Date with Covid Vaccines`, "%", "<br />", "Residents Up to Date with Covid Vaccines: ", 100*presentation_data$`Current Residents Up to Date with Covid Vaccines`, "%", "<br /><br />",  "Residents Weekly Confirmed Covid: ", presentation_data$`Residents Weekly Confirmed Covid`, "<br />", "<br />", "Residents Weekly Covid Deaths: ", presentation_data$`Residents Weekly Covid Deaths`, "<br />", "Residents Weekly All Deaths: ", presentation_data$`Residents Weekly All Deaths`, "<br />", "Residents Total Covid Deaths: ", presentation_data$`Residents Total Covid Deaths`,  "<br />", "Residents Total All Deaths: ", presentation_data$`Residents Total All Deaths`, "<br /><br />", "Beds All: ", presentation_data$`Beds All`, "<br />", "Beds Occupied: ", presentation_data$`Beds Occupied`, "<br />", "Weekly Resident Covid Cases Per 1,000 Residents: ", presentation_data$`Weekly Resident Covid Cases Per 1,000 Residents`, "<br />", "Weekly Resident Covid Deaths Per 1,000 Residents: ", presentation_data$`Weekly Resident Covid Deaths Per 1,000 Residents`, "<br />", "Total Resident Covid Deaths Per 1,000 Residents: ", presentation_data$`Total Resident Covid Deaths Per 1,000 Residents`, "<br />", "Staff % with covid this week: ", presentation_data$`Inferred Percentage of Current Healthcare Personnel Who Currently Have Covid`, "%", "<br />",  "Resident % with covid this week: ", presentation_data$`Inferred Percentage of Current Residents Who Currently Have Covid`, "%", "<br /><br />", "Week Ending: ", presentation_data$`Week Ending`)
 	
 	presentation_data$ResidentFullPercent <- presentation_data$`Current Residents Up to Date with Covid Vaccines`*100
 	presentation_data$StaffFullPercent <- presentation_data$`Current Healthcare Personnel Up to Date with Covid Vaccines`*100
-	presentation_data$StaffEverVaxPercent <- presentation_data$`Current Healthcare Personnel Ever Vaccinated for Covid`*100
 	
 	color_domain <- ifelse(is.na(presentation_data$`Current Healthcare Personnel Up to Date with Covid Vaccines`), 0, presentation_data$`Current Healthcare Personnel Up to Date with Covid Vaccines`)
 	
@@ -183,7 +179,6 @@ make_succinct_data <- function(presentation_data) {
 		"State",
 		"Current Residents Up to Date with Covid Vaccines",
 		"Current Healthcare Personnel Up to Date with Covid Vaccines",
-		"Current Healthcare Personnel Ever Vaccinated for Covid",
 		"Residents Total All Deaths",
 		"Residents Total Covid Deaths",
 		"Beds All",

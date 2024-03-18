@@ -36,12 +36,6 @@ reactable(final_data,
       list(background = color)
     }, format = colFormat(percent = TRUE, digits = 1)),
 	
-	'Current Healthcare Personnel Ever Vaccinated for Covid' = colDef(style = function(value) {
-	  normalized <- (ifelse(is.na(value), 0, value) - 0) / 1
-	  color <- blue_pal(normalized)
-	  list(background = color)
-	}, format = colFormat(percent = TRUE, digits = 1)),
-	
 	# 'Total Resident Covid Deaths Per 1,000 Residents' = colDef(style = function(value) {
 	#   normalized <- log1p(ifelse(is.na(value), 0, value) - min(final_data$`Total Resident Covid Deaths Per 1,000 Residents`, na.rm=TRUE)) / log1p(max(final_data$`Total Resident Covid Deaths Per 1,000 Residents`, na.rm=TRUE))
 	#   color <- red_pal(normalized)
