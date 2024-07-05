@@ -7,6 +7,7 @@ library(crosstalk)
 library(leaflet)
 library(plotly)
 library(lubridate)
+library(usmap)
 
 get_data <- function(year=2023) {
 	tmp <- tempfile(fileext = ".zip")

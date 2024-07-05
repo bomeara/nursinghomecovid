@@ -1,6 +1,6 @@
 source("_targets.R")
-tar_invalidate(data_2024)
-tar_invalidate(covid_data)
+#tar_invalidate(data_2024)
+#tar_invalidate(covid_data)
 try({tar_prune()}, silent=TRUE)
 tar_make()
 
