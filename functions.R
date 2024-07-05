@@ -33,10 +33,13 @@ aggregate_by_state_and_week <- function(covid_data) {
 		weekly_resident_confirmed_covid_cases = sum(`Residents Weekly Confirmed COVID-19`, na.rm=TRUE), 
 		weekly_staff_confirmed_covid_cases = sum(`Staff Weekly Confirmed COVID-19`, na.rm=TRUE),
 		weekly_staff_person_count = sum(`Number of All Healthcare Personnel Eligible to Work in this Facility for At Least 1 Day This Week`, na.rm=TRUE),
-		weekly_resident_person_count = sum(`Number of Residents Staying in this Facility for At Least 1 Day This Week`, na.rm=TRUE)
-		) |> rename(State = `Provider State`)
+		weekly_resident_person_count = sum(`Number of Residents Staying in this Facility for At Least 1 Day This Week`, na.rm=TRUE),
+		weekly_resident_fully_vaxxed = sum(`Number of Residents Staying in this Facility for At Least 1 Day This Week Up to Date with COVID-19 Vaccines`, na.rm=TRUE) ,
+		weekly_staff_fully_vaxxed = sum(`Number of Healthcare Personnel Eligible to Work in this Facility for At Least 1 Day This Week Up to Date with COVID-19 Vaccines`, na.rm=TRUE)) |> rename(State = `Provider State`)
 		result$weekly_resident_covid_percentage <- round(100*result$weekly_resident_confirmed_covid_cases/result$weekly_resident_person_count,2)
 		result$weekly_staff_covid_percentage <- round(100*result$weekly_staff_confirmed_covid_cases/result$weekly_staff_person_count,2)
+		result$weekly_resident_vax_percentage <- round(100*result$weekly_resident_fully_vaxxed/result$weekly_resident_person_count,2)
+		result$weekly_staff_vax_percentage <- round(100*result$weekly_staff_fully_vaxxed/result$weekly_staff_person_count,2)
 	return(result)
 }
 
