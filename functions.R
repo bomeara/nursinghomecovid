@@ -8,6 +8,8 @@ library(leaflet)
 library(plotly)
 library(lubridate)
 library(usmap)
+library(ggplot2)
+library(viridis)
 
 get_data <- function(year=2023) {
 	tmp <- tempfile(fileext = ".zip")
