@@ -55,9 +55,9 @@ plot_usmap(data=current, values="weekly_staff_covid_percentage") + theme(legend.
 ### Map of vaccination status
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
 
-plot_usmap(data=current, values="weekly_resident_vax_percentage") + theme(legend.position="top") + scale_fill_viridis(name=paste0("Percent of nursing home residents fully vaccinated\n(Week ending ", unique(current$`Week Ending`), ")"), option="H")
+plot_usmap(data=current, values="weekly_resident_vax_percentage") + theme(legend.position="top") + scale_fill_viridis(name=paste0("Percent of nursing home residents fully vaccinated\n(Week ending ", unique(current$`Week Ending`), ")"), option="H", limits=c(0,100), direction=-1)
 		   
 
-plot_usmap(data=current, values="weekly_staff_vax_percentage") + theme(legend.position="top") + scale_fill_viridis(name=paste0("Percent of nursing home staff fully_vaccinated\n(Week ending ", unique(current$`Week Ending`), ")"), option="H")
+plot_usmap(data=current, values="weekly_staff_vax_percentage") + theme(legend.position="top") + scale_fill_viridis(name=paste0("Percent of nursing home staff fully_vaccinated\n(Week ending ", unique(current$`Week Ending`), ")"), option="H", limits=c(0,100), direction=-1)
 ```
 
