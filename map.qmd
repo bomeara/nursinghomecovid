@@ -10,7 +10,7 @@ final_data <- SharedData$new(covid_presentation_data)
 ```
 
 
-This is a map showing all the facilities that had data which the [federal government](https://data.cms.gov/covid-19/covid-19-nursing-home-data) believes passed a quality assurance check and which US census data could provide a latitude and longitude for given the facility's street address. Color shows the percentage of healthcare staff currently (as of the week ending  `r max(covid_data$'Week Ending', na.rm=TRUE)` ) fully vaccinated for covid (purple is 100% vaccinated, yellow is 0% vaccinated). You can use the sliders and checkboxes below to filter facilities. Clicking on any point will show detail on the facility. Click on a point to get all the data for that facility. The map is zoomed out to show the lower 48 states, but you can zoom in to see individual facilities and move and zoom to see other US states and territories.
+This is a map showing all the facilities that had data which the federal government believes passed a quality assurance check and which US census data could provide a latitude and longitude for given the facility's street address. Color shows the percentage of healthcare staff currently (as of the week ending  `r max(covid_data$'Week Ending', na.rm=TRUE)` ) fully vaccinated for covid (purple is 100% vaccinated, yellow is 0% vaccinated). You can use the sliders and checkboxes below to filter facilities. Clicking on any point will show detail on the facility. Click on a point to get all the data for that facility. The map is zoomed out to show the lower 48 states, but you can zoom in to see individual facilities and move and zoom to see other US states and territories.
 
 {{< include filter.qmd >}}
 

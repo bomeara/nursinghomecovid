@@ -2,7 +2,7 @@
 title: "About"
 ---
 
-This uses data from <https://data.cms.gov/covid-19/covid-19-nursing-home-data> .
+This uses federal data.
 
 The site is made with quarto and R: the source code is at <https://github.com/bomeara/nursinghomecovid> . It uses the targets, readr, tidyverse, tidygeocoder, reactable, stringr, crosstalk, plotly, and leaflet packages.
 
@@ -11,8 +11,6 @@ It was made by [Brian O'Meara](http://brianomeara.info). I'm a biologist, but th
 To get in touch with an issue, go to <https://github.com/bomeara/nursinghomecovid/issues>. For issues with the original data, go to <https://data.cms.gov/covid-19/covid-19-nursing-home-data>.
 
 To run this yourself, go to <https://github.com/bomeara/nursinghomecovid>, clone the repository, and then source `run.R` from within R to run quarto to make the site. Make sure you have the packages listed above installed. This will download the data, process it in R, and make the site.
-
-To use the original data, go to <https://data.cms.gov/covid-19/covid-19-nursing-home-data> and download the CSV file for the year you want. It should be able to be opened in Microsoft Excel, Apple Numbers, or similar. If you're a journalist or researcher, please use the original data -- I try to do minimal processing of the data, but it's still not as secure as using the original.
 
 ### To find a facility
 

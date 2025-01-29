@@ -10,7 +10,7 @@ final_data <- SharedData$new(covid_presentation_data)
 ```
 
 
-The US Centers for Medicare and Medicaid Services puts out a dataset of covid incidence, deaths, and vaccination at `r nrow(covid_cleaned)` US nursing homes. The data are available at <https://data.cms.gov/covid-19/covid-19-nursing-home-data>. It has info on individual nursing homes, but it can be a little hard to use. I am making it more usable here, trying to make it easier for folks to see how people in nursing homes are being cared for. This uses federal data from the week ending `r max(covid_data$'Week Ending', na.rm=TRUE)`. 
+The US federal government puts out a dataset of covid incidence, deaths, and vaccination at `r nrow(covid_cleaned)` US nursing homes. It has info on individual nursing homes, but it can be a little hard to use. I am making it more usable here, trying to make it easier for folks to see how people in nursing homes are being cared for. This uses federal data from the week ending `r max(covid_data$'Week Ending', na.rm=TRUE)`. 
 
 The tabs above have different views of the data. **If you want to look at detail on a particular facility, it is probably easiest to use the [map](map.html) or [table](table.html) pages**. Some quick summaries:
 

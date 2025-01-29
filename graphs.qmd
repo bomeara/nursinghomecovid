@@ -10,7 +10,7 @@ final_data <- SharedData$new(covid_presentation_data)
 ```
 
 
-First is a scatter plot showing with color the percentage of healthcare staff currently (as of the week ending  `r max(covid_data$'Week Ending', na.rm=TRUE)`) fully vaccinated for covid, with the horizontal axis showing the percentage of residents fully vaccinated and the vertical axis showing the number of residents who died from covid, normalized over the number of residents through time (these data all come directly from <https://data.cms.gov/covid-19/covid-19-nursing-home-data>). There are histograms after that for counts. You can use the sliders and checkboxes below to filter facilities and the graphs will automatically update. Clicking on any point will show detail on the facility.
+First is a scatter plot showing with color the percentage of healthcare staff currently (as of the week ending  `r max(covid_data$'Week Ending', na.rm=TRUE)`) fully vaccinated for covid, with the horizontal axis showing the percentage of residents fully vaccinated and the vertical axis showing the number of residents who died from covid, normalized over the number of residents through time. There are histograms after that for counts. You can use the sliders and checkboxes below to filter facilities and the graphs will automatically update. Clicking on any point will show detail on the facility.
 
 ## Scatter plot of nursing home covid deaths vs. resident vaccination rates
 

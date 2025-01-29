@@ -10,7 +10,7 @@ final_data <- SharedData$new(covid_presentation_data)
 ```
 
 
-This is a table showing all the facilities that had data which the [federal government](https://data.cms.gov/covid-19/covid-19-nursing-home-data) believes passed a quality assurance check. You can use the sliders and checkboxes below to filter facilities. You can also click on the column headers to sort the table and type in the box below each column header to filter the table. Scroll to the right in the table to see more columns.
+This is a table showing all the facilities that had data which the federal government believes passed a quality assurance check. You can use the sliders and checkboxes below to filter facilities. You can also click on the column headers to sort the table and type in the box below each column header to filter the table. Scroll to the right in the table to see more columns.
 
 {{< include filter.qmd >}}
 
